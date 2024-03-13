@@ -4,10 +4,6 @@ pipeline {
     stage('Build') {
       agent any
       steps {
-        sh 'java -version'
-        sh 'export JAVA_HOME=/home/ubuntu/.jdks/corretto-17.0.10'
-        sh 'java -version'
-        sh 'mvn -version'
         sh './jenkins/build.sh'
         stash(name: 'Buzz java 17', includes: 'target/**')
       }
