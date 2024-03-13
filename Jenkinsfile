@@ -1,13 +1,13 @@
 pipeline {
-  agent {
-    node {
-      label 'java11'
-    }
-
-  }
+  agent any
   stages {
     stage('Build') {
-      agent any
+      agent {
+        node {
+          label 'java11'
+        }
+
+      }
       steps {
         sh './jenkins/build.sh'
         stash(name: 'Buzz java 17', includes: 'target/**')
