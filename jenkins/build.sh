@@ -5,8 +5,6 @@ set -e
 
 # Optional: Set JAVA_HOME path if not already set
 # export JAVA_HOME=/path/to/your/java/home
-java -version
-mvn -version
 # Clean and build the project
 echo "Cleaning the project..."
 mvn clean
