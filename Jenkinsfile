@@ -48,6 +48,12 @@ pipeline {
         }
 
         stage('Test 11') {
+          agent {
+            node {
+              label 'java11'
+            }
+
+          }
           steps {
             unstash 'Java 11'
             sh './jenkins/test-all.sh'
