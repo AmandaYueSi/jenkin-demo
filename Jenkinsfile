@@ -1,7 +1,7 @@
 pipeline {
   agent any
   stages {
-    stage('Build Java 17') {
+    stage('Build') {
       agent any
       steps {
         sh './jenkins/build.sh'
@@ -9,7 +9,7 @@ pipeline {
       }
     }
 
-    stage('Testing A 17') {
+    stage('Testing') {
       agent any
       steps {
         unstash 'Buzz java 17'
