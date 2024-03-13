@@ -4,8 +4,8 @@ pipeline {
     stage('Build') {
       agent any
       steps {
-        java -version
-        mvn -version
+        sh 'java -version'
+        sh 'mvn -version'
         sh './jenkins/build.sh'
         stash(name: 'Buzz java 17', includes: 'target/**')
       }
