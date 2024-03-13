@@ -1,24 +1,31 @@
 pipeline {
-  agent any
+  agent none
   stages {
     stage('Build') {
       agent {
         node {
-          label 'java11'
+          label 'java17'
         }
 
       }
       steps {
         sh './jenkins/build.sh'
         stash(name: 'Buzz java 17', includes: 'target/**')
+        stash(name: 'Java 17', includes: 'target/**')
       }
     }
 
     stage('Testing') {
-      agent any
+      agent {
+        node {
+          label 'java17'
+        }
+
+      }
       steps {
         unstash 'Buzz java 17'
         sh './jenkins/test-all.sh'
+        unstash 'Java 17'
       }
     }
 
